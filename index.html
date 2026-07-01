@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Gungun ❤️</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Poppins:wght=300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #1a0005; font-family: 'Poppins', sans-serif; overflow: hidden; height: 100vh; display: flex; justify-content: center; align-items: center; color: white; position: relative; }
+
+        /* Flower Drop Animation */
+        .flower-particle {
+            position: absolute;
+            top: -50px;
+            pointer-events: none;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+        }
+
+        .bg-flower-left { position: absolute; left: -50px; bottom: -50px; width: 250px; opacity: 0.2; transform: rotate(45deg); pointer-events: none; z-index: 2; }
+        .bg-flower-right { position: absolute; right: -50px; top: -50px; width: 250px; opacity: 0.2; transform: rotate(-135deg); pointer-events: none; z-index: 2; }
+
+        /* Animated Password Login Screen */
+        #login-screen { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, #20000a 0%, #050002 100%); display: flex; justify-content: center; align-items: center; z-index: 20; transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .login-card { background: rgba(255, 255, 255, 0.06); padding: 40px 30px; border-radius: 25px; backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5); text-align: center; max-width: 400px; width: 90%; animation: float 3s ease-in-out infinite; }
+        .login-card h2 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: #ff4d6d; margin-bottom: 20px; }
+        .login-card input { width: 100%; padding: 12px 20px; border-radius: 30px; border: 2px solid rgba(255, 77, 109, 0.3); background: rgba(0, 0, 0, 0.4); color: white; font-size: 1rem; text-align: center; margin-bottom: 15px; outline: none; transition: 0.3s; }
+        .login-card input:focus { border-color: #ff4d6d; box-shadow: 0 0 15px rgba(255, 77, 109, 0.4); }
+        .login-card button { background: #ff4d6d; color: white; border: none; padding: 12px 35px; border-radius: 30px; font-weight: 600; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4); }
+        .login-card button:hover { background: #ff758f; transform: translateY(-2px); }
+        #login-error { color: #ffb3c1; font-size: 0.85rem; margin-top: 10px; display: none; }
+
+        /* App Screens */
+        #sorry-screen { position: absolute; width: 100%; height: 100%; background: radial-gradient(circle, #2c000e 0%, #000000 100%); display: flex; justify-content: center; align-items: center; z-index: 10; opacity: 0; pointer-events: none; transition: opacity 1s ease-in-out; }
+        .sorry-text { font-family: 'Dancing Script', cursive; font-size: 4rem; color: #ff4d6d; text-shadow: 0 0 20px rgba(255, 77, 109, 0.6); text-align: center; padding: 20px; }
+
+        #camera-screen { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 1s ease-in-out; background: linear-gradient(135deg, #1f0312 0%, #0c0007 100%); z-index: 5; }
+        .container { text-align: center; background: rgba(255, 255, 255, 0.04); padding: 35px; border-radius: 25px; backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5); z-index: 6; position: relative; max-width: 95%; }
+        h2 { font-weight: 400; margin-bottom: 15px; font-size: 1.6rem; }
+        h2 span { color: #ff4d6d; font-weight: 600; }
+        
+        /* Camera Container with Laser Scanner Line */
+        .video-container { position: relative; width: 440px; height: 330px; margin: 0 auto 20px; border-radius: 20px; overflow: hidden; border: 4px solid #ff4d6d; box-shadow: 0 0 25px rgba(255, 77, 109, 0.5); background: #000; }
+        @media (max-width: 450px) { .video-container { width: 320px; height: 240px; } }
+        video { width: 100%; height: 100%; object-fit: cover; transform: scaleX(-1); }
+        
+        /* Sci-Fi Scanner Overlay Effect */
+        .scanner-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, transparent, #ff4d6d, #ff758f, #ff4d6d, transparent);
+            box-shadow: 0 0 15px #ff4d6d, 0 0 25px #ff758f;
+            animation: scan 2.5s ease-in-out infinite;
+            z-index: 10;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            50% { top: 100%; }
+            100% { top: 0%; }
+        }
+        
+        #status-text { font-weight: 600; color: #ffb3c1; margin-top: 10px; font-size: 1.1rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3); letter-spacing: 0.5px; }
+
+        #final-screen { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 1.5s ease-in-out; background: radial-gradient(circle, #ff4d6d 0%, #4a0010 100%); text-align: center; padding: 20px; z-index: 5; }
+        .love-card { background: rgba(255, 255, 255, 0.15); padding: 40px; border-radius: 30px; backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 15px 35px rgba(0,0,0,0.2); max-width: 500px; animation: float 3s ease-in-out infinite; z-index: 6; position: relative; }
+        .love-card h1 { font-family: 'Dancing Script', cursive; font-size: 4rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .love-card p { font-size: 1.2rem; line-height: 1.6; font-weight: 300; }
+        .card-rose-img { width: 80px; margin-bottom: 10px; animation: pulse 2s infinite ease-in-out; }
+        
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        
+        .heart { position: absolute; color: rgba(255, 255, 255, 0.6); animation: fly 5s linear infinite; bottom: -50px; z-index: 4; }
+        @keyframes fly { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <!-- Local Path Romantic Audio Stream Engine -->
+    <audio id="bg-music" src="C:\Users\Pc\Downloads\Mera Yaar Bhaag Milkha Bhaag 128 Kbps.mp3" loop></audio>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/3405/3405803.png" class="bg-flower-left" alt="rose decoration">
+    <img src="https://cdn-icons-png.flaticon.com/512/3405/3405803.png" class="bg-flower-right" alt="rose decoration">
+
+    <!-- Step 1: Secure Password Card Lock -->
+    <div id="login-screen">
+        <div class="login-card">
+            <h2>Welcome Gungun ✨</h2>
+            <p style="font-size:0.9rem; margin-bottom: 15px; color:#ddd;">Enter password to unlock your surprise:</p>
+            <input type="password" id="password-input" placeholder="Type password here...">
+            <button onclick="verifyPassword()">Unlock ❤️</button>
+            <div id="login-error">Wrong password! Ek baar phir yaad karo? 🥺</div>
+        </div>
+    </div>
+
+    <!-- Step 2: Sorry Presentation Screen -->
+    <div id="sorry-screen">
+        <div class="sorry-text">I am Sorry, Gungun... 🥺 <br><span style="font-size: 2rem; display:block; margin-top:10px;">🌹 Please listen to me... 🌹</span></div>
+    </div>
+
+    <!-- Step 3: Immersive Camera Scanner View (No Countdown Visible) -->
+    <div id="camera-screen">
+        <div class="container">
+            <h2>Hey Gungun, <span>Smile Please?</span> 😊</h2>
+            <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 15px;">Maan jao na, ek pyaari si smile do to dekhein!</p>
+            <div class="video-container">
+                <div class="scanner-line"></div>
+                <video id="video" autoplay playsinline muted></video>
+            </div>
+            <div id="status-text">Initializing smile matrix... ⚙️</div>
+        </div>
+    </div>
+
+    <!-- Step 4: Final Gift Card Screen -->
+    <div id="final-screen">
+        <div class="love-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1043/1043431.png" class="card-rose-img" alt="love rose">
+            <h1>Thank You! ❤️</h1>
+            <p>Aapki smile duniya ki sabse khoobsurat cheez hai. Ab gussa thuk do aur maaf bhi kar do! I promise aage se aisi galti nahi hogi. ✨</p>
+        </div>
+    </div>
+
+    <script>
+        const loginScreen = document.getElementById('login-screen');
+        const sorryScreen = document.getElementById('sorry-screen');
+        const cameraScreen = document.getElementById('camera-screen');
+        const finalScreen = document.getElementById('final-screen');
+        const video = document.getElementById('video');
+        const statusText = document.getElementById('status-text');
+        const bgMusic = document.getElementById('bg-music');
+
+        function startFlowerRain() {
+            const flowers = ['🌹', '🌸', '🌷', '🌼', '💐'];
+            setInterval(() => {
+                const flower = document.createElement('div');
+                flower.classList.add('flower-particle');
+                flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+                flower.style.left = Math.random() * 100 + 'vw';
+                flower.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                flower.style.animationDuration = (Math.random() * 5 + 4) + 's';
+                document.body.appendChild(flower);
+                setTimeout(() => flower.remove(), 9000);
+            }, 400);
+        }
+
+        startFlowerRain();
+
+        function verifyPassword() {
+            const input = document.getElementById('password-input').value.trim().toLowerCase();
+            const errorDiv = document.getElementById('login-error');
+            
+            if (input === 'sparsh i love you') {
+                loginScreen.style.opacity = '0';
+                loginScreen.style.pointerEvents = 'none';
+                
+                bgMusic.volume = 0.6;
+                bgMusic.play().catch(e => console.log("Audio play allowed context setup."));
+
+                setTimeout(() => {
+                    loginScreen.style.display = 'none';
+                    sorryScreen.style.opacity = '1';
+                    sorryScreen.style.pointerEvents = 'all';
+                    
+                    setTimeout(() => {
+                        sorryScreen.style.opacity = '0';
+                        setTimeout(() => {
+                            sorryScreen.style.display = 'none';
+                            cameraScreen.style.opacity = '1';
+                            cameraScreen.style.pointerEvents = 'all';
+                            startTrickScanner(); 
+                        }, 1000);
+                    }, 4000);
+                }, 800);
+            } else {
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        document.getElementById('password-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') verifyPassword();
+        });
+
+        // 100% Fail-Proof 10-Second Smart Custom Trick Engine
+        function startTrickScanner() {
+            statusText.innerText = "Connecting Webcam Stream... 📸";
+            
+            navigator.mediaDevices.getUserMedia({ 
+                video: { width: 440, height: 330, facingMode: "user" } 
+            })
+            .then(stream => {
+                video.srcObject = stream;
+                
+                // Dynamic Fake Feedback Loops to hold her attention perfectly
+                setTimeout(() => { statusText.innerText = "Scanning your smile... Please hold still! 🔍"; }, 1000);
+                setTimeout(() => { statusText.innerText = "Smile please! Detecting lip curve matrix... 😊"; }, 3500);
+                setTimeout(() => { statusText.innerText = "Matching facial data nodes... Almost done! ✨"; }, 7000);
+                setTimeout(() => { statusText.innerText = "Smile fully synchronized! Access Granted! 😍"; }, 9500);
+
+                // Hidden 10 Seconds Target Trigger Clock
+                setTimeout(() => {
+                    if(video.srcObject) {
+                        video.srcObject.getTracks().forEach(track => track.stop());
+                    }
+                    goToFinalScreen();
+                }, 10500); 
+            })
+            .catch(err => {
+                // If webcam fails or permission denied, it still seamlessly passes after 10s as a backup!
+                statusText.innerText = "Scanning your smile... Smile please! 😊";
+                setTimeout(goToFinalScreen, 10000);
+            });
+        }
+
+        function goToFinalScreen() {
+            cameraScreen.style.opacity = '0';
+            cameraScreen.style.pointerEvents = 'none';
+            setTimeout(() => {
+                cameraScreen.style.display = 'none';
+                finalScreen.style.opacity = '1';
+                finalScreen.style.pointerEvents = 'all';
+                startHeartsAnimation();
+            }, 1000);
+        }
+
+        function startHeartsAnimation() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                finalScreen.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
